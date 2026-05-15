@@ -16,7 +16,7 @@ def read_csv(file_path, delimiter=','):
     except FileNotFoundError:
         logging.error('File not found')
 
-def read_lines(file_path):
+def read_lines(file_path, do_strip=True):
     """
     Read a text file and return a list of lines.
     :param file_path:
@@ -24,7 +24,7 @@ def read_lines(file_path):
     """
     try:
         with open(file_path, 'r') as file:
-            return [line.strip() for line in file]
+            return [line.strip() if do_strip else line for line in file]
     except FileNotFoundError:
         logging.error('File not found')
         raise
